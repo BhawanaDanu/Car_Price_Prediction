@@ -92,3 +92,34 @@ plt.xlabel("Actual Price")
 plt.ylabel("Predicted Price")
 plt.title("Actual Prices VS Predcited Prices")
 plt.show()
+
+lass_reg_model = Lasso()
+
+lass_reg_model.fit(X_train,Y_train)
+
+training_data_prediction=lass_reg_model.predict(X_train)
+
+#R squared error
+error_score=metrics.r2_score(Y_train, training_data_prediction)
+print('R-square error',error_score)
+
+#Visualize the actual prices and predicted prices
+plt.scatter(Y_train,training_data_prediction)
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Actual Prices VS Predcited Prices")
+plt.show()
+
+#prediction on test data
+test_data_prediction=lass_reg_model.predict(X_test)
+
+#R squared error
+error_score=metrics.r2_score(Y_test, test_data_prediction)
+print('R-square error',error_score)
+
+#Visualize the actual prices and predicted prices on test data
+plt.scatter(Y_test,test_data_prediction)
+plt.xlabel("Actual Price")
+plt.ylabel("Predicted Price")
+plt.title("Actual Prices VS Predcited Prices")
+plt.show()
